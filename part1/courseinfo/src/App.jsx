@@ -3,61 +3,103 @@
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
-const Header = (props) => {
+
+
+
+const Part = (props) => {
   console.log(props);
-  return <h1>{props.course}</h1>;
-};
-const Content = (props) => {
-  console.log(props);
+  const { part } = props;
   return (
     <div>
-      <Part />
-      <Part />
-      <Part />
+      <p>
+        {part.name} {part.exercises}
+      </p>
     </div>
   );
 };
-const Total = (props) => {
+
+const Header = (props) => {
   console.log(props);
-  return <div></div>;
+  const { course } = props;
+  return (
+    <div>
+      <h1>{course.name}</h1>
+    </div>
+  );
+};
+
+const Content = (props) => {
+  console.log(props);
+  const { part } = props;
+  return (
+    <div>
+      <p>
+        {part.name} {part.exercises}
+      </p>
+    </div>
+  );
+};
+
+const Course = (props) => {
+  console.log(props);
+  const { course } = props;
+  return (
+    <div>
+      <Header course={course} />
+    </div>
+  );
 };
 
 const App = () => {
-  const course  = {
-  name: "Half Stack application development",
-  parts: [
+  const courses = [
     {
-      name: "Fundamentals of React",
-      exercises: 10,
+      name: "Half Stack application development",
+      id: 1,
+      parts: [
+        {
+          name: "Fundamentals of React",
+          exercises: 10,
+          id: 1,
+        },
+        {
+          name: "Using props to pass data",
+          exercises: 7,
+          id: 2,
+        },
+        {
+          name: "State of a component",
+          exercises: 14,
+          id: 3,
+        },
+        {
+          name: "Redux",
+          exercises: 11,
+          id: 4,
+        },
+      ],
     },
     {
-      name: "Using props to pass data",
-      exercises: 7,
+      name: "Node.js",
+      id: 2,
+      parts: [
+        {
+          name: "Routing",
+          exercises: 3,
+          id: 1,
+        },
+        {
+          name: "Middlewares",
+          exercises: 7,
+          id: 2,
+        },
+      ],
     },
-    {
-      name: "State of a component",
-      exercises: 14,
-    },
-  
-  ]
-  }
+  ];
+
   return (
     <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
-
-      <Header course={course} />
-      <Content parts ={parts} />
-      <Total parts={parts}/>
+      <Course course={courses[0]} />
+      <Course course={courses[1]} />
     </div>
   );
 };
