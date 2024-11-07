@@ -5,18 +5,29 @@ import "./App.css";
 
 
 
-
 const Part = (props) => {
   console.log(props);
   const { part } = props;
   return (
     <div>
-      <p>
-        {part.name} {part.exercises}
-      </p>
+      <p>{part.name} {part.exercises}</p>
     </div>
   );
 };
+
+const Parts = (props) => {
+  console.log(props);
+  const { parts } = props;
+  return (
+    <div>
+      {parts.map((part) => (
+        <Part key={part.id} part={part} />
+      ))}
+    </div>
+  );
+};
+
+
 
 const Header = (props) => {
   console.log(props);
@@ -30,15 +41,14 @@ const Header = (props) => {
 
 const Content = (props) => {
   console.log(props);
-  const { part } = props;
+  const { course } = props;
   return (
     <div>
-      <p>
-        {part.name} {part.exercises}
-      </p>
+      <Parts parts={course.parts} />
     </div>
   );
 };
+
 
 const Course = (props) => {
   console.log(props);
@@ -100,6 +110,7 @@ const App = () => {
     <div>
       <Course course={courses[0]} />
       <Course course={courses[1]} />
+      
     </div>
   );
 };
