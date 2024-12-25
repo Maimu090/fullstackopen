@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build:ui": "npm run build",
+    "deploy:full": "npm run build:ui",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
